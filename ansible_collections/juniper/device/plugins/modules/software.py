@@ -279,6 +279,13 @@ options:
     required: false
     default: false
     type: bool
+  ssh_config:
+    description:
+      - The path to the SSH client configuration file. If this option is not
+        specified, then the PyEZ Device instance by default queries file
+        ~/.ssh/config.
+    required: false
+    type: path    
   version:
     description:
       - The version of software contained in the file specified by the
@@ -520,6 +527,8 @@ def main():
         install_timeout=dict(required=False,
                              type='int',
                              default=1800),
+        ssh_config=dict(required=False,
+                             type='str'),
         kwargs=dict(required=False,
                     aliases=['kwarg', 'args', 'arg'],
                     type='dict',
